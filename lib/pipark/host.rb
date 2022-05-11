@@ -14,6 +14,11 @@ module Pipark
       host 'localhost'
     end
 
+    # Returns true if the address can be pinged.
+    def pingable?(address)
+      system "ping -c 1 #{address} > /dev/null 2>&1"
+    end
+
   end
 
 
@@ -33,6 +38,16 @@ module Pipark
     # Flushes cached attributes.
     def flush
       @cache = {}
+    end
+
+    # Returns true if the Host is localhost.
+    def localhost?
+      @localhost ||= %w(localhost 127.0.0.1 ::1).include? address
+    end
+
+    # Returns true if the Host can be pinged.
+    def pingable?
+      Pipark.pingable? address
     end
 
     private
