@@ -50,6 +50,16 @@ module Pipark
       Pipark.pingable? address
     end
 
+    # Returns the Host's hostname.
+    def hostname
+      cache['hostname'] ||= file_read('/etc/hostname').chomp
+    end
+
+    # Returns the Host's Raspberry Pi model.
+    def model
+      cache['model'] ||= file_read('/proc/device-tree/model').chop
+    end
+
     private
 
     def cache
