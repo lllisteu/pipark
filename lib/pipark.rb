@@ -5,4 +5,6 @@ end
 
   version
 
+  host
+
 ).each { |m| require "pipark/#{m}" }
