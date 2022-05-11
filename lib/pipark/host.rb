@@ -30,6 +30,17 @@ module Pipark
       "Host '#{address}'"
     end
 
+    # Flushes cached attributes.
+    def flush
+      @cache = {}
+    end
+
+    private
+
+    def cache
+      @cache ||= {}
+    end
+
   end
 
 end
