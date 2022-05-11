@@ -41,6 +41,14 @@ module Pipark
       @cache ||= {}
     end
 
+    def file_read(file)
+      if localhost?
+        File.read(file)
+      else
+        `ssh #{address} cat #{file}`
+      end
+    end
+
   end
 
 end
