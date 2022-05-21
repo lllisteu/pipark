@@ -85,6 +85,13 @@ module Pipark
       end
     end
 
+    def _view_21x8
+      view = 'RPi ' + hostname.rjust(17) + "\n\n"
+      view << os_release['NAME'].center(21) + "\n"
+      view << os_release['VERSION'].center(21) + "\n\n"
+      view << "      CPU %2d °C\n" % (cpu_temperature*0.001)
+    end
+
   end
 
 end
