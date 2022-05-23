@@ -1,7 +1,7 @@
 module Pipark
 
   # pipark version.
-  VERSION = '0.0.3'
+  VERSION = '0.1.0'
 
   # Returns Pipark::VERSION.
   def self.version
