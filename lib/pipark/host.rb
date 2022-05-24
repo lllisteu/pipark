@@ -71,6 +71,12 @@ module Pipark
         file_read('/etc/os-release').lines.map { |l| l.chomp.split('=') }.map { |k,v| [k,v.chomp.gsub('"','')] }.to_h
     end
 
+    # Returns the host's boot time.
+    def boot_time
+      cache['boot_time'] ||=
+      file_read('/proc/stat').match( /btime\s+(\d+)/ ) { |m| Time.at(m.captures[0].to_i) }
+    end
+
     private
 
     def cache

@@ -2,6 +2,11 @@
 
 # History
 
+## Unreleased
+
+* `Host` class:
+    * `#boot_time`.
+
 ## 0.1.0 (23 May 2022)
 [GitHub](https://github.com/lllisteu/pipark/releases/tag/v0.1.0) • [RubyGems](https://rubygems.org/gems/pipark/versions/0.1.0) • [Documentation](https://www.rubydoc.info/gems/pipark/0.1.0)
 
