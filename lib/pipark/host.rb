@@ -74,7 +74,12 @@ module Pipark
     # Returns the host's boot time.
     def boot_time
       cache['boot_time'] ||=
-      file_read('/proc/stat').match( /btime\s+(\d+)/ ) { |m| Time.at(m.captures[0].to_i) }
+        file_read('/proc/stat').match( /btime\s+(\d+)/ ) { |m| Time.at(m.captures[0].to_i) }
+    end
+
+    # Returns the host's serial number.
+    def serial_number
+      cache['serial-number'] ||= file_read('/proc/device-tree/serial-number').chop
     end
 
     private
