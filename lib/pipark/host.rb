@@ -96,6 +96,14 @@ module Pipark
       end
     end
 
+    def sh(command)
+      if localhost?
+        `#{command}`
+      else
+        `ssh #{address} "#{command}"`
+      end
+    end
+
     def _view_21x8
       view = 'RPi ' + hostname.rjust(17) + "\n\n"
       view << os_release['NAME'].center(21) + "\n"
