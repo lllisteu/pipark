@@ -82,6 +82,18 @@ module Pipark
       cache['serial-number'] ||= file_read('/proc/device-tree/serial-number').chop
     end
 
+    # Returns version information for the Ruby installed on the host.
+    #
+    # Nil if no Ruby is found.
+    def ruby
+      cache['ruby'] ||=
+        if localhost?
+          RUBY_DESCRIPTION
+        else
+          (result = sh 'ruby -v').empty? ? nil : result.chomp
+        end
+    end
+
     private
 
     def cache
