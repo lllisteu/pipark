@@ -22,7 +22,7 @@ There are no extra steps needed to use Pipark directly on your Raspberry Pi.
 
 To access a Raspberry Pi via the network, Pipark uses [SSH](https://en.wikipedia.org/wiki/Secure_Shell), and your Raspberry Pi needs to be set up for passwordless SSH access.
 
-This means you can enter `ssh <ip address>` or `ssh <hostname>` in a terminal to login to your Raspberry Pi, without the need to enter a password or anything else.
+If you can enter `ssh <ip address>` or `ssh <hostname>` in a terminal to login to your Raspberry Pi, without the need to enter a password or anything else, you are all set.
 
 See this [guide for configuring passwordless SSH access](https://www.raspberrypi.com/documentation/computers/remote-access.html#passwordless-ssh-access).
 
