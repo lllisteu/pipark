@@ -94,11 +94,13 @@ module Pipark
         end
     end
 
+    # Returns the host's state.
     def state
       %w(
         address hostname model serial_number
-        os_release boot_time cpu_temperature
+        os_release boot_time
         ruby
+        cpu_temperature
       ).map { |m| [m, send(m)] }.to_h
     end
 
