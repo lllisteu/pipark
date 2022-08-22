@@ -94,6 +94,14 @@ module Pipark
         end
     end
 
+    def state
+      %w(
+        address hostname model serial_number
+        os_release boot_time cpu_temperature
+        ruby
+      ).map { |m| [m, send(m)] }.to_h
+    end
+
     private
 
     def cache
