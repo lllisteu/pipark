@@ -96,12 +96,14 @@ module Pipark
 
     # Returns the host's state.
     def state
-      %w(
+      result = %w(
         address hostname model serial_number
         os_release boot_time
         ruby
         cpu_temperature
       ).map { |m| [m, send(m)] }.to_h
+      result['update_time'] = Time.now.gmtime
+      result
     end
 
     private
