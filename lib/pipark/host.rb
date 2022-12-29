@@ -106,6 +106,21 @@ module Pipark
       end
     end
 
+    # Experimental: returns info for HAT.
+    def hat
+      if localhost?
+        dir = '/sys/firmware/devicetree/base/hat'
+        if File.exist? dir
+          %w(product vendor).map do |k|
+            file = "#{dir}/#{k}"
+            [ k, File.readable?(file) ? File.read(file).chop : nil ]
+          end.to_h
+        else
+          false
+        end
+      end
+    end
+
     # Returns the host's state.
     def state
       result = { 'update_time' => Time.now.gmtime }
