@@ -113,8 +113,8 @@ module Pipark
         address hostname model serial_number
         os_release boot_time
         ruby
-        cpu_temperature
-      ).map { |m| [m, send(m)] }.to_h
+        cpu_temperature led_status
+      ).map { |m| [m, send(m)] }.select { |a| a[1] }.to_h
     end
 
     private
