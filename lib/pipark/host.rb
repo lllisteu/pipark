@@ -94,6 +94,18 @@ module Pipark
         end
     end
 
+    # Experimental: returns the status of the host's LEDs.
+    def led_status
+      dir = '/sys/class/leds'
+      if localhost?
+        Dir[dir + '/led[0-9]'].map do |f|
+          if f.match(dir + '/(led\d)')
+            [ $1, get_led_status($1) ]
+          end
+        end.to_h
+      end
+    end
+
     # Returns the host's state.
     def state
       result = { 'update_time' => Time.now.gmtime }
@@ -124,6 +136,15 @@ module Pipark
         `#{command}`
       else
         `ssh #{address} "#{command}"`
+      end
+    end
+
+    def get_led_status(led)
+      file = "/sys/class/leds/#{led}/trigger"
+      if File.readable? file
+        if File.read(file).match(/\[(.*)\]/)
+          $1
+        end
       end
     end
 
