@@ -100,7 +100,7 @@ module Pipark
       if localhost?
         Dir[dir + '/led[0-9]'].map do |f|
           if f.match(dir + '/(led\d)')
-            [ $1, get_led_status($1) ]
+            [ $1, get_led_status($1).first ]
           end
         end.to_h
       end
@@ -142,9 +142,7 @@ module Pipark
     def get_led_status(led)
       file = "/sys/class/leds/#{led}/trigger"
       if File.readable? file
-        if File.read(file).match(/\[(.*)\]/)
-          $1
-        end
+        [ File.read(file).sub(/\[(.*)\]/, '\1').split, $1 ].reverse
       end
     end
 
