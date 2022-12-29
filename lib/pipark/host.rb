@@ -95,7 +95,7 @@ module Pipark
     end
 
     # Experimental: returns the status of the host's LEDs.
-    def led_status
+    def leds
       dir = '/sys/class/leds'
       if localhost?
         Dir[dir + '/led[0-9]'].map do |f|
