@@ -95,6 +95,8 @@ module Pipark
     end
 
     # Experimental: returns the status of the host's LEDs.
+    #
+    # Only supported for localhost.
     def leds
       dir = '/sys/class/leds'
       if localhost?
@@ -106,7 +108,9 @@ module Pipark
       end
     end
 
-    # Experimental: returns info for HAT.
+    # Experimental: returns info for the installed HAT, or false if no HAT is found.
+    #
+    # Only supported for localhost.
     def hat
       if localhost?
         dir = '/sys/firmware/devicetree/base/hat'
