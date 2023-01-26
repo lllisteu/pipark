@@ -31,16 +31,9 @@ See this [guide for configuring passwordless SSH access](https://www.raspberrypi
 While logged in to your Raspberry Pi, find out its model:
 
 ```ruby
-this_pi = Pipark.host('localhost')
+this_pi = Pipark.localhost
 => Pipark::Host "localhost"
 this_pi.model
-=> "Raspberry Pi 3 Model B Plus Rev 1.3"
-```
-
-Shortcut:
-
-```ruby
-Pipark.localhost.model
 => "Raspberry Pi 3 Model B Plus Rev 1.3"
 ```
 
