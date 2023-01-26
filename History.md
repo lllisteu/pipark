@@ -2,7 +2,8 @@
 
 # History
 
-## Unreleased
+## 0.4.0 (26 January 2023)
+[GitHub](https://github.com/lllisteu/pipark/releases/tag/v0.4.0) • [RubyGems](https://rubygems.org/gems/pipark/versions/0.4.0) • [Documentation](https://www.rubydoc.info/gems/pipark/0.4.0)
 
 * `Host` class:
     * `#state` includes update time.
