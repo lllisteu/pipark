@@ -136,6 +136,18 @@ module Pipark
       ).map { |m| [m, send(m)] }.to_h
     end
 
+    # Experimental: reboots the system.
+    def reboot(minutes=1)
+      shutdown(minutes, reboot: true)
+    end
+
+    # Experimental: shuts the system down.
+    def shutdown(minutes=1, reboot: false)
+      sh 'sudo shutdown' +
+         (reboot ? ' -r' : '') +
+         (minutes != 1 ? ' +%d' % minutes : '')
+    end
+
     private
 
     def cache
