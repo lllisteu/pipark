@@ -94,7 +94,7 @@ module Pipark
         end
     end
 
-    # Experimental: returns the status of the host's LEDs.
+    # Returns the status of the host's LEDs.
     #
     # Only supported for localhost.
     def leds
@@ -108,7 +108,7 @@ module Pipark
       end
     end
 
-    # Experimental: returns info for the installed HAT, or false if no HAT is found.
+    # Returns info for the installed HAT, or false if no HAT is found.
     #
     # Only supported for localhost.
     def hat
